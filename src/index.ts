@@ -64,5 +64,5 @@ async function run() {
 		}
 	}
 
-	await write(path, tools)
+	await write(path, res)
 }

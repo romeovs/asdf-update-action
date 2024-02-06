@@ -28154,7 +28154,7 @@ async function run() {
             res.push(Object.assign(Object.assign({}, tool), { version }));
         }
     }
-    await (0,_file__WEBPACK_IMPORTED_MODULE_1__/* .write */ .c)(path, tools);
+    await (0,_file__WEBPACK_IMPORTED_MODULE_1__/* .write */ .c)(path, res);
 }
 
 __webpack_async_result__();
