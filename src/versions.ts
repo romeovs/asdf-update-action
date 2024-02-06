@@ -24,7 +24,7 @@ export function match(
 	versions: string[],
 ): string | null {
 	const range = toRange(version, strategy)
-	const sorted = semver.rsort(versions)
+	const sorted = semver.rsort(versions.filter((x) => semver.valid(x)))
 
 	for (const version of sorted) {
 		if (semver.satisfies(version, range)) {
