@@ -3,7 +3,7 @@ description: Update your .tool-version dependencies
 author: Romeo Van Snick <romeo@romeovansnick.be>
 runs:
   using: node20
-  main: main.js
+  main: dist/index.js
 inputs:
   path:
     description: Path of .tool-versions file
