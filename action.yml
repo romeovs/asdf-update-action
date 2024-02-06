@@ -1,0 +1,15 @@
+name: asdf update
+description: Update your .tool-version dependencies
+author: Romeo Van Snick <romeo@romeovansnick.be>
+runs:
+  using: node20
+  main: main.js
+inputs:
+  path:
+    description: Path of .tool-versions file
+    default: .tool-versions
+    required: true
+  strategy:
+    description: Allow updating at this semver specificity (major | minor | patch)
+    default: minor
+    required: true
