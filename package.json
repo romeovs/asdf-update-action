@@ -5,6 +5,7 @@
 	"author": "Romeo Van Snick <romeo@romeovansnick.be>",
 	"license": "MIT",
 	"devDependencies": {
+		"@types/node": "^20.11.16",
 		"prettier": "^3.2.5"
 	}
 }
