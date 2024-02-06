@@ -40,7 +40,9 @@ async function run() {
 			continue
 		}
 
-		core.debug(`finding latest matching version for ${tool.name}`)
+		core.debug(
+			`finding latest matching version for ${tool.name} (current version is ${tool.version})`,
+		)
 
 		const vs = all[tool.name]
 		if (!vs) {
@@ -49,8 +51,12 @@ async function run() {
 
 		const version = match(tool.version, strategy, vs)
 		if (!version) {
+			core.debug(`no version found for ${tool.name}`)
 			res.push(tool)
 		} else {
+			core.info(
+				`new version for ${tool.name}: ${version} ${version === tool.version ? "(unchanged)" : ""}`,
+			)
 			res.push({
 				...tool,
 				version,

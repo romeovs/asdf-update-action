@@ -28139,16 +28139,18 @@ async function run() {
             res.push(tool);
             continue;
         }
-        _actions_core__WEBPACK_IMPORTED_MODULE_0__.debug(`finding latest matching version for ${tool.name}`);
+        _actions_core__WEBPACK_IMPORTED_MODULE_0__.debug(`finding latest matching version for ${tool.name} (current version is ${tool.version})`);
         const vs = all[tool.name];
         if (!vs) {
             throw new Error("unreachable");
         }
         const version = (0,_versions__WEBPACK_IMPORTED_MODULE_3__/* .match */ .E)(tool.version, strategy, vs);
         if (!version) {
+            _actions_core__WEBPACK_IMPORTED_MODULE_0__.debug(`no version found for ${tool.name}`);
             res.push(tool);
         }
         else {
+            _actions_core__WEBPACK_IMPORTED_MODULE_0__.info(`new version for ${tool.name}: ${version} ${version === tool.version ? "(unchanged)" : ""}`);
             res.push(Object.assign(Object.assign({}, tool), { version }));
         }
     }
@@ -28202,7 +28204,7 @@ function toRange(version, strategy) {
 }
 function match(version, strategy, versions) {
     const range = toRange(version, strategy);
-    const sorted = semver__WEBPACK_IMPORTED_MODULE_0___default().rsort(versions);
+    const sorted = semver__WEBPACK_IMPORTED_MODULE_0___default().rsort(versions.filter((x) => semver__WEBPACK_IMPORTED_MODULE_0___default().valid(x)));
     for (const version of sorted) {
         if (semver__WEBPACK_IMPORTED_MODULE_0___default().satisfies(version, range)) {
             return version;
